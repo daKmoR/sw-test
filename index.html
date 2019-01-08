@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web components for building beautiful websites</title>
+
+<style type="text/css">
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+@keyframes fade {
+  0%   { opacity: 0; }
+  11.11%   { opacity: 1; }
+  33.33%  { opacity: 1; }
+  44.44%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  animation-name: fade;
+  animation-duration: 9s;
+  animation-iteration-count: infinite;
+}
+
+.bg--1 {
+  background-image: url('./patrick-schneider-1279914-unsplash.jpg');
+  animation-delay: 0s;
+}
+.bg--2 {
+  background-image: url('./robynne-1279703-unsplash.jpg');
+  animation-delay: 3s;
+}
+.bg--3 {
+  background-image: url('./yiran-ding-1277981-unsplash.jpg');
+  animation-delay: 6s;
+}
+</style>
+</head>
+<body>
+  <div class="bg bg--1"></div>
+  <div class="bg bg--2"></div>
+  <div class="bg bg--3"></div>
+
+  <script>
+    // Check that service workers are registered
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+</body>
+</html>
